@@ -5,7 +5,7 @@ services:
     build: ./frontend
     container_name: frontend-docker
     ports:
-      - "8282:80"
+      - "8080:80"
     volumes:
       - ./frontend:/usr/local/apache2/htdocs/
 
@@ -22,4 +22,11 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: user1234
     ports:
+      - "8282:80"
+
+  phpmyadmin:
+    image: phpmyadmin
+    ports:
       - "8181:80"
+    links:
+      - database
