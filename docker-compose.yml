@@ -23,8 +23,6 @@ services:
       MYSQL_PASSWORD: user1234
     ports:
       - "3306:3306"
-    networks:
-      - mysql-phpmyadmin
 
   phpmyadmin:
     depends_on:
@@ -33,7 +31,4 @@ services:
     ports:
       - "8090:80"
     environment:
-      PMA_HOST: database
-      MYSQL_ROOT_PASSWORD: admin1234
-    networks:
-      - mysql-phpmyadmin
+      - PMA_ARBITRARY=1
