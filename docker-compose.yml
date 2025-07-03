@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  frontend:
+    build: ./frontend
+    container_name: frontend-docker
+    ports:
+      - "8080:80"
+    volumes:
+      - ./app:/usr/local/apache2/htdocs/
+
+  backend:
+    build: ./backend
+    container_name: backend-docker
+
+  database:
+    container_name: database-docker
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: admin1234
+      MYSQL_DATABASE: mon_agence_db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user1234
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
