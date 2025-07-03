@@ -12,6 +12,7 @@ services:
   backend:
     build: ./backend
     container_name: backend-docker
+    restart: unless-stopped
 
   database:
     container_name: database-docker
