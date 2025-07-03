@@ -13,19 +13,22 @@ services:
     build: ./backend
     container_name: backend-docker
 
-  database:
+  db:
     image: mariadb:latest
-    container_name: database-docker
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: users
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user_password
     volumes:
       - dbdata:/var/lib/mysql
 
   phpmyadmin:
-    image: phpmyadmin
+    image: phpmyadmin/phpmyadmin
     restart: always
     environment:
+      PMA_HOST: db
       MYSQL_ROOT_PASSWORD: root
     ports:
       - "8090:80"
