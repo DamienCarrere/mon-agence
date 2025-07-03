@@ -5,9 +5,9 @@ services:
     build: ./frontend
     container_name: frontend-docker
     ports:
-      - "8080:80"
+      - "8282:80"
     volumes:
-      - ./app:/usr/local/apache2/htdocs/
+      - ./frontend:/usr/local/apache2/htdocs/
 
   backend:
     build: ./backend
