@@ -12,15 +12,14 @@ services:
   backend:
     build: ./backend
     container_name: backend-docker
-    restart: unless-stopped
 
   database:
     container_name: database-docker
-    image: mysql
+    image: mysql:latest
     environment:
       MYSQL_ROOT_PASSWORD: admin1234
       MYSQL_DATABASE: mon_agence_db
       MYSQL_USER: user
       MYSQL_PASSWORD: user1234
     ports:
-      - "3306:3306"
+      - "8181:80"
