@@ -1,5 +1,11 @@
 #!/bin/bash
 
-echo "Test app.sh"
-echo "LE SCRIPT FONCTIONNE"
+nombrepoubelle=1
 
+echo "Test app.sh"
+
+while [ "$nombrepoubelle" == 1 ]
+do
+echo "LE SCRIPT FONCTIONNE CORRECTEMENT, AUTRE TEST DANS 10 SECONDES"
+sleep 10
+done
