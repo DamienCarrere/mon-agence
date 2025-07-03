@@ -14,21 +14,22 @@ services:
     container_name: backend-docker
 
   database:
+    image: mariadb:latest
     container_name: database-docker
-    image: mysql:latest
+    restart: always
+    command: --defaut-authentication-plugin=mysql_native_password
     environment:
-      MYSQL_ROOT_PASSWORD: admin1234
-      MYSQL_DATABASE: mon_agence_db
-      MYSQL_USER: user
-      MYSQL_PASSWORD: user1234
-    ports:
-      - "3306:3306"
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - dbdata:/var/lib/mysql
 
   phpmyadmin:
-    depends_on:
-      - database
     image: phpmyadmin
+    restart: always
     ports:
       - "8090:80"
     environment:
       - PMA_ARBITRARY=1
+
+volumes:
+  dbdata:
